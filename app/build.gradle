@@ -1,0 +1,141 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "kotlin-kapt"
+    id "dagger.hilt.android.plugin"
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    defaultConfig {
+        applicationId rootProject.ext.appId
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        multiDexEnabled true
+        testInstrumentationRunner rootProject.ext.customTestInstrumentationRunner
+
+        buildConfigField("String", "API_URL", "\"https://www.rijksmuseum.nl/api/en/\"")
+        buildConfigField("String", "API_KEY", "\"CiYGHNRE\"")
+    }
+    buildTypes {
+        debug {
+            minifyEnabled false
+            debuggable true
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+        }
+        release {
+            minifyEnabled true
+            debuggable false
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+        }
+    }
+    flavorDimensions "app-dimension"
+    productFlavors {
+        primary {
+            dimension "app-dimension"
+        }
+    }
+    compileOptions {
+        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    testOptions {
+        animationsDisabled = true
+    }
+}
+
+dependencies {
+
+    // Kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    // Android Architecture
+    // Common
+    implementation "androidx.multidex:multidex:$rootProject.ext.androidMultiDex"
+    implementation "androidx.core:core-ktx:$rootProject.coreKtxVersion"
+    implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$rootProject.lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$rootProject.lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$rootProject.lifecycleVersion"
+    // UI
+    implementation "androidx.legacy:legacy-support-v4:$rootProject.legacySupport"
+    implementation "androidx.fragment:fragment-ktx:$rootProject.fragment"
+    implementation "androidx.navigation:navigation-ui-ktx:$rootProject.navigation"
+    implementation "androidx.navigation:navigation-fragment-ktx:$rootProject.navigation"
+    implementation "androidx.appcompat:appcompat:$rootProject.appCompatVersion"
+    implementation "com.google.android.material:material:$rootProject.androidMaterialVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
+    // Database
+    implementation "androidx.room:room-runtime:$rootProject.ext.archRoom"
+    implementation "androidx.room:room-ktx:$rootProject.ext.archRoom"
+    kapt "androidx.room:room-compiler:$rootProject.ext.archRoom"
+    implementation "androidx.paging:paging-runtime:$rootProject.ext.archPaging"
+
+    // Dependency Injection
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$rootProject.androidXHilt"
+    kapt "androidx.hilt:hilt-compiler:$rootProject.androidXHilt"
+
+    // Background Jobs
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutinesVersion"
+
+    // Networking
+    implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
+    implementation "com.squareup.okhttp3:okhttp:$rootProject.okHttpVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okHttpVersion"
+    implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
+
+    // Image
+    implementation "com.github.bumptech.glide:glide:$rootProject.glide"
+    kapt "com.github.bumptech.glide:compiler:$rootProject.glide"
+    implementation "com.github.bumptech.glide:okhttp3-integration:$rootProject.glide"
+
+    // Logging & Debugging
+    implementation "com.jakewharton.timber:timber:$rootProject.timberLibraryVersion"
+
+    // Testing
+    debugImplementation("androidx.fragment:fragment-testing:$rootProject.ext.androidFragmentTesting") {
+        exclude group: "androidx.test", module: "monitor"
+        exclude group: "androidx.test", module: "core"
+    }
+    implementation "androidx.test.espresso:espresso-idling-resource:$rootProject.ext.androidTestEspressoCore"
+
+    testImplementation "junit:junit:$rootProject.ext.junit"
+    testImplementation "io.mockk:mockk:$rootProject.ext.mockK"
+    testImplementation "androidx.arch.core:core-testing:$rootProject.ext.androidArchCoreTesting"
+    testImplementation "androidx.test:core:$rootProject.ext.androidTestCore"
+    testImplementation ("androidx.test:runner:$rootProject.ext.androidTestRunner") {
+        exclude group: "junit", module: "junit"
+    }
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$rootProject.ext.coroutinesVersion"
+
+    androidTestImplementation "io.mockk:mockk-android:$rootProject.ext.mockK"
+    androidTestImplementation "androidx.test:core:$rootProject.ext.androidTestCore"
+    androidTestImplementation "androidx.test:runner:$rootProject.ext.androidTestRunner"
+    androidTestImplementation "androidx.test:rules:$rootProject.ext.androidTestRules"
+    androidTestImplementation ("androidx.test.ext:junit:$rootProject.ext.androidTestExtJunit") {
+        exclude group: "junit", module: "junit"
+    }
+    androidTestImplementation ("androidx.test.espresso:espresso-core:$rootProject.ext.androidTestEspressoCore") {
+        exclude group: "junit", module: "junit"
+    }
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$rootProject.ext.androidTestEspressoCore"
+    androidTestImplementation "com.google.dagger:hilt-android-testing:$rootProject.ext.hilt_version"
+    androidTestImplementation "androidx.navigation:navigation-testing:$rootProject.ext.navigation"
+    kaptAndroidTest "com.google.dagger:hilt-android-compiler:$rootProject.ext.hilt_version"
+    androidTestImplementation "com.kaspersky.android-components:kaspresso:$rootProject.ext.kaspresso"
+}

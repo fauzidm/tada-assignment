@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dev.illwiz.tada.data.utils.CustomFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="36dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/avatarImg"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:background="@drawable/circle_placeholder"
+                app:shapeAppearance="@style/ShapeAppearanceOverlay.Circle" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/usernameTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="36dp"
+            android:gravity="center_horizontal"
+            android:textAlignment="gravity"
+            android:textColor="@color/black"
+            android:textSize="28sp"
+            tools:text="Username" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/logoutBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="86dp"
+            android:paddingHorizontal="34dp"
+            android:text="@string/logout" />
+    </LinearLayout>
+
+</dev.illwiz.tada.data.utils.CustomFrameLayout>

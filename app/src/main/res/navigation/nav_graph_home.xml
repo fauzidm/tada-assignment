@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/homeContentFragment"
+    android:id="@+id/nav_graph_home">
+
+    <fragment
+        tools:layout="@layout/fragment_home_content"
+        android:id="@+id/homeContentFragment"
+        android:name="dev.illwiz.tada.presentation.ui.home.HomeContentFragment"/>
+
+    <fragment
+        tools:layout="@layout/fragment_profile"
+        android:id="@+id/profileFragment"
+        android:name="dev.illwiz.tada.presentation.ui.profile.ProfileFragment"/>
+
+    <fragment
+        tools:layout="@layout/fragment_detail"
+        android:id="@+id/detailFragment"
+        android:name="dev.illwiz.tada.presentation.ui.detail.DetailFragment"/>
+</navigation>
