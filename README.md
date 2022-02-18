@@ -1,17 +1,16 @@
 ## Tada Assignment  
 <br>
-<img src="screenshot/app_screenshot_1.png" height="300" />
-<img src="screenshot/app_screenshot_2.png" height="300" />
-<img src="screenshot/app_screenshot_3.png" height="300" />
-<img src="screenshot/app_screenshot_4.png" height="300" />
-<img src="screenshot/app_screenshot_5.png" height="300" />
-<img src="screenshot/app_screenshot_6.png" height="300" />
-<img src="screenshot/app_screenshot_7.png" height="300" />
-<br><br>
+<p float="left" align="middle">
+  <img src="screenshot/app_screenshot_1.png" height="200" />
+  <img src="screenshot/app_screenshot_2.png" height="200" />
+  <img src="screenshot/app_screenshot_3.png" height="200" />
+  <img src="screenshot/app_screenshot_4.png" height="200" />
+  <img src="screenshot/app_screenshot_5.png" height="200" />
+  <img src="screenshot/app_screenshot_6.png" height="200" />
+  <img src="screenshot/app_screenshot_7.png" height="200" />
+</p>
 
 ## Download APK -> [Debug APK](fauzimd-tada-assignment-debug.apk)
-
-<br>
 
 ## Architecture
 - Clean Architecture  
